@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ============================================================================
 async function loadAlbums() {
   try {
-    const response = await fetch("data/albums.json");
+    const response = await fetch("./data/albums.json");
     allAlbums = await response.json();
     filteredAlbums = [...allAlbums];
     console.log("✅ 앨범 데이터 로드:", allAlbums.length);
