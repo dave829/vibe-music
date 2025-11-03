@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIBE 최신 앨범 - 크롤링 데모</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container">
+        <h1>🎵 VIBE 최신 앨범</h1>
+        <p class="subtitle">네이버 VIBE 크롤링 데모 프로젝트</p>
+      </div>
+    </header>
+
+    <!-- 프로젝트 소개 -->
+    <section class="intro">
+      <div class="container">
+        <div class="intro-content">
+          <h2>📋 씨바이오테크 웹크롤링 채용 과제</h2>
+          <p>
+            <strong>과제 1</strong>: 네이버 VIBE 최신 앨범 2페이지 크롤링 (제목,
+            가수, 이미지)
+          </p>
+          <p>
+            <strong>과제 2</strong>: 첫 번째 앨범의 수록곡을 동적으로 크롤링
+          </p>
+          <p style="margin-top: 16px; font-size: 0.95rem; opacity: 0.9">
+            일반적인 크롤링 방법이 차단되는 SPA 환경에서
+            <strong>"네트워크 요청 가로채기"</strong> 기법을 사용하여 100%
+            성공률을 달성했습니다. 병렬 처리로 <strong>6배 속도 향상</strong>을
+            구현했습니다.
+          </p>
+          <div class="tech-stack">
+            <span class="badge">Node.js</span>
+            <span class="badge">Playwright</span>
+            <span class="badge">Network Interception</span>
+            <span class="badge">병렬 처리</span>
+            <span class="badge">Glassmorphism</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 통계 -->
+    <section class="stats">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="totalAlbums">0</div>
+            <div class="stat-label">총 앨범 수</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="totalArtists">0</div>
+            <div class="stat-label">아티스트 수</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">크롤링 페이지</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">성공률</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 필터 -->
+    <section class="filters">
+      <div class="container">
+        <div class="filter-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="앨범 또는 아티스트 검색..."
+            class="search-input"
+          />
+          <select id="pageFilter" class="filter-select">
+            <option value="all">전체 페이지</option>
+            <option value="1">1페이지</option>
+            <option value="2">2페이지</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 앨범 그리드 -->
+    <section class="albums">
+      <div class="container">
+        <div class="section-header">
+          <h2>🎼 최신 앨범 목록</h2>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="grid">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <rect x="2" y="2" width="7" height="7" rx="1" />
+                <rect x="11" y="2" width="7" height="7" rx="1" />
+                <rect x="2" y="11" width="7" height="7" rx="1" />
+                <rect x="11" y="11" width="7" height="7" rx="1" />
+              </svg>
+            </button>
+            <button class="view-btn" data-view="list">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <rect x="2" y="3" width="16" height="2" rx="1" />
+                <rect x="2" y="9" width="16" height="2" rx="1" />
+                <rect x="2" y="15" width="16" height="2" rx="1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="albumGrid" class="album-grid">
+          <!-- 앨범 카드가 여기에 동적으로 추가됩니다 -->
+        </div>
+        <div id="noResults" class="no-results" style="display: none">
+          <p>검색 결과가 없습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술 설명 -->
+    <section class="tech-explanation">
+      <div class="container">
+        <h2>🔧 핵심 기술: 네트워크 요청 가로채기</h2>
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-icon">❌</div>
+            <h3>일반 크롤링</h3>
+            <p>직접 API 호출 시 차단됨</p>
+            <code>fetch('api.naver.com')</code>
+            <span class="tech-result fail">→ XML 에러</span>
+          </div>
+          <div class="tech-card highlight">
+            <div class="tech-icon">✅</div>
+            <h3>네트워크 가로채기</h3>
+            <p>브라우저의 API 응답을 가로챔</p>
+            <code>page.waitForResponse()</code>
+            <span class="tech-result success">→ 성공!</span>
+          </div>
+        </div>
+        <div class="code-example">
+          <h4>핵심 코드</h4>
+          <pre><code>// 1. API 응답 대기 설정
+const apiPromise = page.waitForResponse(
+  response => response.url().includes('albumChart')
+);
+
+// 2. 페이지 방문 (브라우저가 자동으로 API 호출)
+await page.goto('https://vibe.naver.com/...');
+
+// 3. API 응답 가로채기
+const data = await (await apiPromise).json();</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025 VIBE 크롤링 데모 프로젝트</p>
+        <p>개발자: 형슬기 | 기술: Node.js + Playwright</p>
+        <div class="footer-links">
+          <a href="https://github.com" target="_blank">GitHub</a>
+          <a href="https://playwright.dev" target="_blank">Playwright</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

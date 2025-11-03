@@ -1,0 +1,673 @@
+/* ============================================================================
+   Modern Glassmorphism + Flat Design
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #667eea;
+  --primary-light: #764ba2;
+  --accent: #f093fb;
+  --success: #4ade80;
+  --dark: #1e293b;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR",
+    sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================================
+   Header - Glassmorphism
+   ============================================================================ */
+.header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 32px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ============================================================================
+   Intro Section - Glass Card
+   ============================================================================ */
+.intro {
+  margin: 32px 0;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.intro-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.intro-content:hover {
+  transform: translateY(-4px);
+}
+
+.intro h2 {
+  font-size: 1.75rem;
+  color: white;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.intro p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.badge:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ============================================================================
+   Stats - Flat Cards
+   ============================================================================ */
+.stats {
+  padding: 32px 0;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+/* ============================================================================
+   Filters - Glass
+   ============================================================================ */
+.filters {
+  padding: 24px 0;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+}
+
+.search-input,
+.filter-select {
+  padding: 14px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.search-input {
+  flex: 1;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.filter-select {
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filter-select option {
+  background: var(--dark);
+  color: white;
+}
+
+/* ============================================================================
+   Albums Section
+   ============================================================================ */
+.albums {
+  padding: 32px 0;
+  animation: fadeInUp 0.6s ease 0.5s both;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.view-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.view-btn.active {
+  background: white;
+  color: var(--primary);
+}
+
+/* ============================================================================
+   Album Grid - Optimized
+   ============================================================================ */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.album-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  will-change: transform;
+}
+
+.album-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.album-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.album-card:hover::after {
+  opacity: 0.1;
+}
+
+.album-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  transition: transform 0.3s ease;
+}
+
+.album-card:hover .album-image {
+  transform: scale(1.05);
+}
+
+.album-info {
+  padding: 16px;
+}
+
+.album-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.album-artist {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.album-page {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* List View */
+.album-grid.list-view {
+  grid-template-columns: 1fr;
+}
+
+.list-view .album-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.list-view .album-image {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.list-view .album-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  color: white;
+}
+
+.no-results p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* ============================================================================
+   Tech Explanation - Glass Cards
+   ============================================================================ */
+.tech-explanation {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 60px 0;
+  margin: 48px 0;
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
+}
+
+.tech-explanation h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 48px;
+  color: white;
+  font-weight: 700;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.tech-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 32px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.tech-card.highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(240, 147, 251, 0.2)
+  );
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tech-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.tech-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: white;
+  font-weight: 700;
+}
+
+.tech-card p {
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tech-card code {
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.tech-result {
+  display: block;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
+
+.tech-result.fail {
+  color: #fca5a5;
+}
+
+.tech-result.success {
+  color: #86efac;
+}
+
+.code-example {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-example h4 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.code-example pre {
+  overflow-x: auto;
+}
+
+.code-example code {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+}
+
+/* ============================================================================
+   Footer - Glass
+   ============================================================================ */
+.footer {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 40px 0;
+  text-align: center;
+  margin-top: 60px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .album-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-content {
+    padding: 24px;
+  }
+}
+
+/* ============================================================================
+   Performance Optimizations
+   ============================================================================ */
+.album-card {
+  contain: layout style paint;
+}
+
+.album-image {
+  content-visibility: auto;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
