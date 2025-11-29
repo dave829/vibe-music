@@ -1,6 +1,6 @@
 # 네이버 VIBE 크롤링 프로젝트
 
-**개발자**: 형슬기  
+**개발자**: dave
 **개발 언어**: JavaScript (Node.js + Playwright)
 
 ---
@@ -335,7 +335,7 @@ const response = await promise;  // 응답 가로챔
 
 ## 📞 연락처
 
-010-8329-0892 / hsg829@naver.com
+hsg829@naver.com
 
 ---
 
